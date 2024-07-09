@@ -1,0 +1,218 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  background-color: #0d1117;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.card {
+  margin: 50px auto;
+  width: 70%;
+  border-radius: 10px;
+  background: linear-gradient(
+    112deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.1) 73.15%
+  );
+  box-shadow: 0px 1px 24px -1px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  max-height: 80vh;
+  overflow-y: scroll;
+  padding: 20px;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255, 0, 0, 0.4);
+}
+
+/* INFORMATION */
+.information {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.information h1 {
+  color: #fff;
+}
+.information span {
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  color: #000;
+  background-color: #ffd700;
+  padding: 5px;
+  border-radius: 100%;
+}
+
+/* FORM */
+.form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.form input {
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.6);
+  height: 35px;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+.form input::placeholder {
+  font-size: 18px;
+}
+.form button {
+  width: 101px;
+  height: 35px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  font-size: 17px;
+  border-radius: 3px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.form button:hover {
+  background-color: #ffd700;
+  color: #000;
+}
+
+/* SHOPPING LIST */
+.shopping-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.list-item {
+  padding: 5px 10px;
+  border-bottom: 1px solid #ffd700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.list-item.active {
+  background-color: #42ade3;
+  border-radius: 5px;
+}
+.list-item .item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.list-item .item-info span {
+  width: 30px;
+  text-align: center;
+  padding: 5px;
+  background-color: #ffd700;
+  font-weight: bold;
+  border-bottom-left-radius: 5px;
+}
+.list-item .item-info p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.list-item .item-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.list-item .item-actions span {
+  font-size: 30px;
+  flex-shrink: 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+.list-item .item-actions .times {
+  color: #ffd700;
+}
+.list-item .item-actions .check {
+  color: #fff;
+}
+.list-item.active .item-actions span {
+  color: #000;
+}
+
+/* FILTER */
+.filter {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.btns {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.btns button {
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  border: 1px solid #ffd700;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+.btns button:hover {
+  background-color: #ffd700;
+  color: #000;
+}
+.btns button.active {
+  background-color: #ffd700;
+  color: #000;
+}
