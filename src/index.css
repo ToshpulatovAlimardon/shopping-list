@@ -216,3 +216,16 @@
   background-color: #ffd700;
   color: #000;
 }
+
+/* MEDIA */
+@media screen and (max-width: 800px) {
+  .wrapper {
+    grid-template-columns: 100%;
+  }
+  .wrapper img {
+    display: none;
+  }
+  .card {
+    height: 100vh;
+  }
+}
