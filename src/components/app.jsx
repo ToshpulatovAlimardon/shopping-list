@@ -5,12 +5,14 @@ import ShoppingAddForm from "./shopping-add-form";
 import ShoppingList from "./shopping-list";
 import { arr } from "../constants";
 import { v4 as uuidv4 } from "uuid";
+import SearchPanel from "./search-panel";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: arr,
+      search: "",
     };
   }
 
@@ -45,8 +47,22 @@ class App extends Component {
     });
   };
 
+  onSearch = (arr, term) => {
+    if (term.length === 0) {
+      return arr;
+    }
+
+    return arr.filter((item) => item.title.toLowerCase().indexOf(term.toLowerCase()) > -1);
+  };
+
+  onUpdateSearch = (search) => {
+    this.setState({ search });
+  };
+
   render() {
-    const { data } = this.state;
+    const { data, search } = this.state;
+
+    const allData = this.onSearch(data, search);
 
     return (
       <div className="app">
@@ -54,13 +70,16 @@ class App extends Component {
           <div className="card">
             <Information length={data.length} />
 
+            <SearchPanel onUpdateSearch={this.onUpdateSearch} />
+
             <ShoppingAddForm onAdd={this.onAdd} />
 
             <ShoppingList
-              data={data}
+              data={allData}
               onDelete={this.onDelete}
               onToggleActive={this.onToggleActive}
             />
+
             <Filter />
           </div>
           <img src="/earth.svg" alt="" />
