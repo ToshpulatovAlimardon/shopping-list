@@ -13,6 +13,7 @@ class App extends Component {
     this.state = {
       data: arr,
       search: "",
+      filter: "all",
     };
   }
 
@@ -47,22 +48,39 @@ class App extends Component {
     });
   };
 
-  onSearch = (arr, term) => {
+  searchData = (arr, term) => {
     if (term.length === 0) {
       return arr;
     }
 
-    return arr.filter((item) => item.title.toLowerCase().indexOf(term.toLowerCase()) > -1);
+    return arr.filter(
+      (item) => item.title.toLowerCase().indexOf(term.toLowerCase()) > -1
+    );
   };
 
   onUpdateSearch = (search) => {
     this.setState({ search });
   };
 
-  render() {
-    const { data, search } = this.state;
+  filterDate = (arr, filter) => {
+    switch (filter) {
+      case "completed":
+        return arr.filter((item) => item.active);
+      case "big-size":
+        return arr.filter((item) => item.size > 10);
+      default:
+        return arr;
+    }
+  };
 
-    const allData = this.onSearch(data, search);
+  onFilterSelect = (filter) => {
+    this.setState({ filter });
+  };
+
+  render() {
+    const { data, search, filter } = this.state;
+
+    const allData = this.filterDate(this.searchData(data, search), filter);
 
     return (
       <div className="app">
@@ -80,7 +98,7 @@ class App extends Component {
               onToggleActive={this.onToggleActive}
             />
 
-            <Filter />
+            <Filter filter={filter} onFilterSelect={this.onFilterSelect} />
           </div>
           <img src="/earth.svg" alt="" />
         </div>
